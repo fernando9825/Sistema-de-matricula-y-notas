@@ -48,18 +48,7 @@
                 </div>
                 
             </div>
-            <div class="col-md-12">
             
-                <div class="tile-stats tile-aqua">
-                    <div class="icon"><i class="entypo-user"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('parent');?>" 
-                    		data-postfix="" data-duration="500" data-delay="0">0</div>
-                    
-                    <h3><?php echo get_phrase('parent');?></h3>
-                   <p>Total parents</p>
-                </div>
-                
-            </div>
     
     	</div>
     </div>
