@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mysql7002.site4now.net',
-	'username' => 'ligma8mi_cesc_us',
-	'password' => 'cesc2018',
-	'database' => 'ligma8mi_cesc_db',
+	'hostname' => 'localhost',//'mysql7002.site4now.net',
+	'username' => 'root',//'ligma8mi_cesc_us',
+	'password' => '',//'cesc2018',
+	'database' => 'school_5',//'ligma8mi_cesc_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

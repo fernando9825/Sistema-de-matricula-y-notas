@@ -40,35 +40,35 @@ foreach($student_info as $row):?>
                 
                     <?php if($row['class_id'] != ''):?>
                     <tr>
-                        <td>Class</td>
+                        <td>Grado</td>
                         <td><b><?php echo $this->crud_model->get_class_name($row['class_id']);?></b></td>
                     </tr>
                     <?php endif;?>
 
                     <?php if($row['section_id'] != '' && $row['section_id'] != 0):?>
                     <tr>
-                        <td>Section</td>
+                        <td>Sección</td>
                         <td><b><?php echo $this->db->get_where('section' , array('section_id' => $row['section_id']))->row()->name;?></b></td>
                     </tr>
                     <?php endif;?>
                 
                     <?php if($row['roll'] != ''):?>
                     <tr>
-                        <td>Roll</td>
+                        <td>NIE</td>
                         <td><b><?php echo $row['roll'];?></b></td>
                     </tr>
                     <?php endif;?>
                 
                     <?php if($row['birthday'] != ''):?>
                     <tr>
-                        <td>Birthday</td>
+                        <td>Fecha de nacimiento</td>
                         <td><b><?php echo $row['birthday'];?></b></td>
                     </tr>
                     <?php endif;?>
                 
                     <?php if($row['sex'] != ''):?>
                     <tr>
-                        <td>Gender</td>
+                        <td>Género</td>
                         <td><b><?php echo $row['sex'];?></b></td>
                     </tr>
                     <?php endif;?>
@@ -76,33 +76,29 @@ foreach($student_info as $row):?>
                 
                     <?php if($row['phone'] != ''):?>
                     <tr>
-                        <td>Phone</td>
+                        <td>Telefono</td>
                         <td><b><?php echo $row['phone'];?></b></td>
                     </tr>
                     <?php endif;?>
                 
                     <?php if($row['email'] != ''):?>
                     <tr>
-                        <td>Email</td>
+                        <td>Correo</td>
                         <td><b><?php echo $row['email'];?></b></td>
                     </tr>
                     <?php endif;?>
                 
                     <?php if($row['address'] != ''):?>
                     <tr>
-                        <td>Address</td>
+                        <td>Dirección</td>
                         <td><b><?php echo $row['address'];?></b>
                         </td>
                     </tr>
                     <?php endif;?>
-                    <?php if($row['parent_id'] != ''):?>
+                    <?php if($row['mother_name'] != ''):?>
                     <tr>
-                        <td>Parent</td>
-                        <td><b><?php echo $this->db->get_where('parent' , array('parent_id' => $row['parent_id']))->row()->name;?></b></td>
-                    </tr>
-                    <tr>
-                        <td>Parent Phone</td>
-                        <td><b><?php echo $this->db->get_where('parent' , array('parent_id' => $row['parent_id']))->row()->phone;?></b></td>
+                        <td>Encargado</td>
+                        <td><b><?php echo $row['mother_name'];  ?></b></td>
                     </tr>
                     <?php endif;?>
                     

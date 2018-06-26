@@ -16,8 +16,7 @@ foreach ( $edit_data as $row):
                 <?php echo form_open(base_url() . 'index.php?teacher/student/'.$row['class_id'].'/do_update/'.$row['student_id'] , array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data'));?>
                 
                 	
-	
-					<div class="form-group">
+				<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>
                         
 						<div class="col-sm-5">
@@ -50,20 +49,7 @@ foreach ( $edit_data as $row):
 						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('parent');?></label>
                         
 						<div class="col-sm-5">
-							<select name="parent_id" class="form-control" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>">
-                              <option value=""><?php echo get_phrase('select');?></option>
-                              <?php 
-									$parents = $this->db->get('parent')->result_array();
-									foreach($parents as $row3):
-										?>
-                                		<option value="<?php echo $row3['parent_id'];?>"
-                                        	<?php if($row['parent_id'] == $row3['parent_id'])echo 'selected';?>>
-													<?php echo $row3['name'];?>
-                                                </option>
-	                                <?php
-									endforeach;
-								  ?>
-                          </select>
+							<input type="text" class="form-control" name="mother_name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="<?php echo $row['mother_name'];?>">
 						</div> 
 					</div>
 					
@@ -122,7 +108,7 @@ foreach ( $edit_data as $row):
 						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('gender');?></label>
                         
 						<div class="col-sm-5">
-							<select name="sex" class="form-control">
+							<select name="sex" class="form-control selectboxit">
                               <option value=""><?php echo get_phrase('select');?></option>
                               <option value="male" <?php if($row['sex'] == 'male')echo 'selected';?>><?php echo get_phrase('male');?></option>
                               <option value="female"<?php if($row['sex'] == 'female')echo 'selected';?>><?php echo get_phrase('female');?></option>
@@ -152,6 +138,7 @@ foreach ( $edit_data as $row):
 							<input type="text" class="form-control" name="email" value="<?php echo $row['email'];?>">
 						</div>
 					</div>
+
                     
                     <div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">

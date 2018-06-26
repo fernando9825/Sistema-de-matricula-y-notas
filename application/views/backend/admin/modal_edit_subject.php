@@ -1,25 +1,85 @@
-<style type="text/css">
-<!--
-.style2 {color: #990000}
-.style3 {font-size: 18px}
--->
-</style>
-<p align="center" class="style3"><strong>Disabled in Basic Version</strong></p>
-<p align="center" class="style3"><strong><a href="http://phpsoftwares.com/" target="_blank" class="style2"><u>Upgrade</u></a> to full version for just 14.99$ only. <u>100% Source Code</u> <a href="http://phpsoftwares.com/" target="_blank"><u><span class="style2">www.PhpSoftwares.com</span> </u></a></strong></p>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<div align="center">
-  <input type="hidden" name="cmd" value="_s-xclick">
-  <input type="hidden" name="hosted_button_id" value="4BKA5ZHWXARDU">
+<?php 
+$edit_data		=	$this->db->get_where('subject' , array('subject_id' => $param2) )->result_array();
+foreach ( $edit_data as $row):
+?>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-primary" data-collapsed="0">
+        	<div class="panel-heading">
+            	<div class="panel-title" >
+            		<i class="entypo-plus-circled"></i>
+					<?php echo get_phrase('edit_student');?>
+            	</div>
+            </div>
+			<div class="panel-body">
+				
+                <?php echo form_open(base_url() . 'index.php?admin/class_routine/do_update/'.$row['class_routine_id'] , array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data'));?>
+                
+	
+                <div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Nombre</label>
+                        
+						<div class="col-sm-8">
+							<input type="text" value=<?php echo "'".$row['name']."'"; ?> class="form-control" name="name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" autofocus>
+                        </div>
+                    </div>
+					
+					<div class="form-group">
+						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('teacher');?></label>
+                        
+						<div class="col-sm-5">
+							<select name="teacher_id" class="form-control" data-validate="required" id="teacher_id" 
+								data-message-required="<?php echo get_phrase('value_required');?>">
+                              <?php 
+									$teachers = $this->db->get('teacher')->result_array();
+									foreach($teachers as $row3):
+										?>
+                                		<option value="<?php echo $row3['teacher_id'];?>"
+                                        	<?php if($row['teacher_id'] == $row3['teacher_id']) echo 'selected';?>>
+													<?php echo $row3['name'];?>
+                                                </option>
+	                                <?php
+									endforeach;
+								  ?>
+                          </select>
+						</div> 
+                    </div>
+                
+					<div class="form-group">
+						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('class');?></label>
+                        
+						<div class="col-sm-5">
+							<select name="class_id" class="form-control" data-validate="required" id="class_id" 
+								data-message-required="<?php echo get_phrase('value_required');?>">
+                              <option value=""><?php echo get_phrase('select');?></option>
+                              <?php 
+									$classes = $this->db->get('class')->result_array();
+									foreach($classes as $row2):
+										?>
+                                		<option value="<?php echo $row2['class_id'];?>"
+                                        	<?php if($row['class_id'] == $row2['class_id'])echo 'selected';?>>
+													<?php echo $row2['name'];?>
+                                                </option>
+	                                <?php
+									endforeach;
+								  ?>
+                          </select>
+						</div> 
+                    </div>
+                    
+
+                    <div class="form-group">
+						<div class="col-sm-offset-3 col-sm-5">
+							<button type="submit" class="btn btn-info"><?php echo get_phrase('edit_subject');?></button>
+						</div>
+					</div>
+                <?php echo form_close();?>
+            </div>
+        </div>
+    </div>
 </div>
-<table>
-<tr><td><input type="hidden" name="on0" value="Select Software:">Upgrade Software:</td></tr><tr><td><select name="os0">
-	<option value="School Software">School Software $14.99 USD</option>
-	<option value="Hospital Software">Hospital Software $9.99 USD</option>
-	<option value="POS Billing Software">POS Billing Software $14.99 USD</option>
-	<option value="All 3 Softwares">All 3 Softwares $29.99 USD</option>
-</select> </td></tr>
-</table>
-<input type="hidden" name="currency_code" value="USD">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
+
+<?php
+endforeach;
+?>
+

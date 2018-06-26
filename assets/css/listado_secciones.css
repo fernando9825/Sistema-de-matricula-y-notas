@@ -1,0 +1,28 @@
+body{font-family: Helvetica; font-size: 12px;}
+@page { margin-top: 100px; margin-left: 25px; margin-right: 25px; margin-bottom: 80px;}
+header { position: fixed; top: -90px; left: 0px; right: 0px; height: 70px;  border-top: 3px solid #333; border-bottom: 3px solid #333; }
+footer { position: fixed; bottom: -60px; left: 0px; right: 0px; border-top: 3px solid #333; background-color: #fff; height: 50px; }
+
+
+#header_logo{background: #fff; width: 150px; text-align: center;}
+#logo{width: 50px;}
+#header_texto{text-align: center; background: #fff; width: 450px; font-weight: bold; font-size: 20px;}
+#header_logos{background: #fff; text-align: center; width: 150px;}
+#logo1, #logo2{width: 120px;}
+
+#footer_texto{text-align: center; font-size: 9px; font-weight: bold;}
+
+#texto_main{margin-top: 25px; text-align: justify;}
+
+#table_info{width: 100%;
+    border-collapse: collapse;
+}
+
+#table_info{
+    border-collapse: collapse;
+}
+
+#table_info, #th_i, #td_i{
+    border: 1px solid black;
+    padding: 4px;
+}

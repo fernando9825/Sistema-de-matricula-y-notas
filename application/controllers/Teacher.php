@@ -101,17 +101,18 @@ class Teacher extends CI_Controller
         if ($this->session->userdata('teacher_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
-            $data['name']       = $this->input->post('name');
-            $data['birthday']   = $this->input->post('birthday');
-            $data['sex']        = $this->input->post('sex');
-            $data['address']    = $this->input->post('address');
-            $data['phone']      = $this->input->post('phone');
-            $data['email']      = $this->input->post('email');
-            $data['password']   = $this->input->post('password');
-            $data['class_id']   = $this->input->post('class_id');
-            $data['section_id'] = $this->input->post('section_id');
-            $data['parent_id']  = $this->input->post('parent_id');
-            $data['roll']       = $this->input->post('roll');
+            $data['name']           = $this->input->post('name');
+            $data['birthday']       = $this->input->post('birthday');
+            $data['sex']            = $this->input->post('sex');
+            $data['address']        = $this->input->post('address');
+            $data['phone']          = $this->input->post('phone');
+            $data['email']          = $this->input->post('email');
+            $data['class_id']       = $this->input->post('class_id');
+            if ($this->input->post('section_id') != '') {
+                $data['section_id'] = $this->input->post('section_id');
+            }
+            $data['mother_name']      = $this->input->post('mother_name');
+            $data['roll']           = $this->input->post('roll');
             $this->db->insert('student', $data);
             $student_id = $this->db->insert_id();
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $student_id . '.jpg');
@@ -119,16 +120,16 @@ class Teacher extends CI_Controller
             redirect(base_url() . 'index.php?teacher/student_add/' . $data['class_id'], 'refresh');
         }
         if ($param2 == 'do_update') {
-            $data['name']        = $this->input->post('name');
-            $data['birthday']    = $this->input->post('birthday');
-            $data['sex']         = $this->input->post('sex');
-            $data['address']     = $this->input->post('address');
-            $data['phone']       = $this->input->post('phone');
-            $data['email']       = $this->input->post('email');
-            $data['class_id']    = $this->input->post('class_id');
-            $data['section_id']  = $this->input->post('section_id');
-            $data['parent_id']   = $this->input->post('parent_id');
-            $data['roll']        = $this->input->post('roll');
+            $data['name']           = $this->input->post('name');
+            $data['birthday']       = $this->input->post('birthday');
+            $data['sex']            = $this->input->post('sex');
+            $data['address']        = $this->input->post('address');
+            $data['phone']          = $this->input->post('phone');
+            $data['email']          = $this->input->post('email');
+            $data['class_id']       = $this->input->post('class_id');
+            $data['section_id']     = $this->input->post('section_id');
+            $data['mother_name']      = $this->input->post('mother_name');
+            $data['roll']           = $this->input->post('roll');
             
             $this->db->where('student_id', $param3);
             $this->db->update('student', $data);
@@ -143,6 +144,36 @@ class Teacher extends CI_Controller
             $this->db->delete('student');
             redirect(base_url() . 'index.php?teacher/student_information/' . $param1, 'refresh');
         }
+    }
+
+    
+    /*** Print PDF ***/
+    function get_listado_secciones($section_id, $class_id){
+        
+        $this->load->library('mydompdf');
+        $this->load->model("Crud_model");
+
+		$data['estudiantes'] = $this->db->get_where("student", array("section_id" => $section_id))->result();
+        $data['grado'] = $this->Crud_model->get_type_name_by_id("class", $class_id)." - ". $this->Crud_model->get_type_name_by_id("section", $section_id);
+        $html= $this->load->view('pdf/listado_secciones', $data, true);
+ 		$this->mydompdf->load_html($html);
+ 		$this->mydompdf->render();
+ 		$this->mydompdf->set_base_path('./assets/css/listado_secciones.css'); //agregar de nuevo el css
+ 		$this->mydompdf->stream("listado.pdf", array("Attachment" => false));
+
+    }
+
+    function get_listado_asistencia($section_id, $class_id){
+        $this->load->library('mydompdf');
+        $this->load->model("Crud_model");
+
+		$data['estudiantes'] = $this->db->get_where("student", array("section_id" => $section_id))->result();
+        $data['grado'] = $this->Crud_model->get_type_name_by_id("class", $class_id)." - ". $this->Crud_model->get_type_name_by_id("section", $section_id);
+        $html= $this->load->view('pdf/listado_asistencia', $data, true);
+ 		$this->mydompdf->load_html($html);
+ 		$this->mydompdf->render();
+ 		$this->mydompdf->set_base_path('./assets/css/listado_secciones.css'); //agregar de nuevo el css
+ 		$this->mydompdf->stream("listado.pdf", array("Attachment" => false));
     }
 
     function get_class_section($class_id)

@@ -23,20 +23,9 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('parent');?></label>
                         
 						<div class="col-sm-5">
-							<select name="parent_id" class="form-control select2">
-                              <option value=""><?php echo get_phrase('select');?></option>
-                              <?php 
-								$parents = $this->db->get('parent')->result_array();
-								foreach($parents as $row):
-									?>
-                            		<option value="<?php echo $row['parent_id'];?>">
-										<?php echo $row['name'];?>
-                                    </option>
-                                <?php
-								endforeach;
-							  ?>
-                          </select>
-						</div> 
+							<input type="text" class="form-control" name="mother_name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" autofocus>
+						</div>
+		
 					</div>
 					
 					<div class="form-group">
@@ -121,47 +110,8 @@
 							<input type="text" class="form-control" name="email" value="">
 						</div>
 					</div>
-					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('password');?></label>
-                        
-						<div class="col-sm-5">
-							<input type="password" class="form-control" name="password" value="" >
-						</div> 
-					</div>
+				
 
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('dormitory');?></label>
-                        
-						<div class="col-sm-5">
-							<select name="dormitory_id" class="form-control selectboxit">
-                              <option value=""><?php echo get_phrase('select');?></option>
-	                              <?php 
-	                              	$dormitories = $this->db->get('dormitory')->result_array();
-	                              	foreach($dormitories as $row):
-	                              ?>
-                              		<option value="<?php echo $row['dormitory_id'];?>"><?php echo $row['name'];?></option>
-                          		<?php endforeach;?>
-                          </select>
-						</div> 
-					</div>
-
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('transport_route');?></label>
-                        
-						<div class="col-sm-5">
-							<select name="transport_id" class="form-control selectboxit">
-                              <option value=""><?php echo get_phrase('select');?></option>
-	                              <?php 
-	                              	$transports = $this->db->get('transport')->result_array();
-	                              	foreach($transports as $row):
-	                              ?>
-                              		<option value="<?php echo $row['transport_id'];?>"><?php echo $row['route_name'];?></option>
-                          		<?php endforeach;?>
-                          </select>
-						</div> 
-					</div>
-	
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>
                         

@@ -50,20 +50,7 @@ foreach ( $edit_data as $row):
 						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('parent');?></label>
                         
 						<div class="col-sm-5">
-							<select name="parent_id" class="form-control select2" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>">
-                              <option value=""><?php echo get_phrase('select');?></option>
-                              <?php 
-									$parents = $this->db->get('parent')->result_array();
-									foreach($parents as $row3):
-										?>
-                                		<option value="<?php echo $row3['parent_id'];?>"
-                                        	<?php if($row['parent_id'] == $row3['parent_id'])echo 'selected';?>>
-													<?php echo $row3['name'];?>
-                                                </option>
-	                                <?php
-									endforeach;
-								  ?>
-                          </select>
+							<input type="text" class="form-control" name="mother_name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="<?php echo $row['mother_name'];?>">
 						</div> 
 					</div>
 					
@@ -153,44 +140,7 @@ foreach ( $edit_data as $row):
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('dormitory');?></label>
-                        
-						<div class="col-sm-5">
-							<select name="dormitory_id" class="form-control selectboxit">
-                              <option value=""><?php echo get_phrase('select');?></option>
-	                              <?php 
-	                              	$dormitories = $this->db->get('dormitory')->result_array();
-	                              	foreach($dormitories as $row2):
-	                              ?>
-                              		<option value="<?php echo $row2['dormitory_id'];?>" 
-                              			<?php if ($row['dormitory_id'] == $row2['dormitory_id']) echo 'selected';?>>
-                              				<?php echo $row2['name'];?>
-                              		</option>
-                          		<?php endforeach;?>
-                          </select>
-						</div> 
-					</div>
-
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('transport_route');?></label>
-                        
-						<div class="col-sm-5">
-							<select name="transport_id" class="form-control selectboxit">
-                              <option value=""><?php echo get_phrase('select');?></option>
-	                              <?php 
-	                              	$transports = $this->db->get('transport')->result_array();
-	                              	foreach($transports as $row2):
-	                              ?>
-                              		<option value="<?php echo $row2['transport_id'];?>"
-                              			<?php if ($row['transport_id'] == $row2['transport_id']) echo 'selected';?>>
-                              				<?php echo $row2['route_name'];?>
-                              		</option>
-                          		<?php endforeach;?>
-                          </select>
-						</div> 
-					</div>
-                    
+					                    
                     <div class="form-group">
 						<div class="col-sm-offset-3 col-sm-5">
 							<button type="submit" class="btn btn-info"><?php echo get_phrase('edit_student');?></button>

@@ -34,15 +34,15 @@
         
         <div class="tab-content">
             <div class="tab-pane active" id="home">
-                
+
                 <table class="table table-bordered datatable" id="table_export">
                     <thead>
                         <tr>
                             <th width="80"><div><?php echo get_phrase('roll');?></div></th>
                             <th width="80"><div><?php echo get_phrase('photo');?></div></th>
                             <th><div><?php echo get_phrase('name');?></div></th>
-                            <th class="span3"><div><?php echo get_phrase('address');?></div></th>
-                            <th><div><?php echo get_phrase('email');?></div></th>
+                            <th class="span3"><div><?php echo get_phrase('class');?></div></th>
+                            <th><div><?php echo get_phrase('section');?></div></th>
                             <th><div><?php echo get_phrase('options');?></div></th>
                         </tr>
                     </thead>
@@ -54,23 +54,17 @@
                             <td><?php echo $row['roll'];?></td>
                             <td><img src="<?php echo $this->crud_model->get_image_url('student',$row['student_id']);?>" class="img-circle" width="30" /></td>
                             <td><?php echo $row['name'];?></td>
-                            <td><?php echo $row['address'];?></td>
-                            <td><?php echo $row['email'];?></td>
+                            <td><?php echo  $this->crud_model->get_type_name_by_id("class", $row['class_id']);?></td>
+                            <td><?php echo  $this->crud_model->get_type_name_by_id("section", $row['section_id']);?></td>
                             <td>
                                 
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                                        Action <span class="caret"></span>
+                                        Accion <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-default pull-right" role="menu">
 
-                                        <!-- STUDENT MARKSHEET LINK  -->
-                                        <li>
-                                            <a href="<?php echo base_url();?>index.php?admin/student_marksheet/<?php echo $row['student_id'];?>">
-                                                <i class="entypo-chart-bar"></i>
-                                                    <?php echo get_phrase('mark_sheet');?>
-                                                </a>
-                                        </li>
+                    
 
                                         
                                         <!-- STUDENT PROFILE LINK -->
@@ -115,14 +109,22 @@
         ?>
             <div class="tab-pane" id="<?php echo $row['section_id'];?>">
                 
-                <table class="table table-bordered">
+                <table class="table table-bordered datatable" id="table_export">
+
+                    <!-- <button class="btn btn-primary" id="" value=<?php //echo "'".$row['section_id']."'";?> >Generar PDF</button> -->
+                    <a class="btn btn-primary" target="_blank" href=<?php echo base_url()."index.php?admin/get_listado_secciones/".$row['section_id']."/".$class_id;?> >Generar listado de Estudiantes</a>
+                    
+                    <a class="btn btn-primary pull-right" target="_blank" href=<?php echo base_url()."index.php?admin/get_listado_asistencia/".$row['section_id']."/".$class_id;?> >Hoja de asistencia</a>
+                    
+                    <br>
+                    <br>
                     <thead>
                         <tr>
                             <th width="80"><div><?php echo get_phrase('roll');?></div></th>
                             <th width="80"><div><?php echo get_phrase('photo');?></div></th>
                             <th><div><?php echo get_phrase('name');?></div></th>
-                            <th class="span3"><div><?php echo get_phrase('address');?></div></th>
-                            <th><div><?php echo get_phrase('email');?></div></th>
+                            <th class="span3"><div><?php echo get_phrase('class');?></div></th>
+                            <th><div><?php echo get_phrase('section');?></div></th>
                             <th><div><?php echo get_phrase('options');?></div></th>
                         </tr>
                     </thead>
@@ -136,13 +138,13 @@
                             <td><?php echo $row['roll'];?></td>
                             <td><img src="<?php echo $this->crud_model->get_image_url('student',$row['student_id']);?>" class="img-circle" width="30" /></td>
                             <td><?php echo $row['name'];?></td>
-                            <td><?php echo $row['address'];?></td>
-                            <td><?php echo $row['email'];?></td>
+                            <td><?php echo  $this->crud_model->get_type_name_by_id("class", $row['class_id']);?></td>
+                            <td><?php echo  $this->crud_model->get_type_name_by_id("section", $row['section_id']);?></td>
                             <td>
                                 
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                                        Action <span class="caret"></span>
+                                        Accion <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-default pull-right" role="menu">
                                         
@@ -203,15 +205,6 @@
 			"sDom": "<'row'<'col-xs-3 col-left'l><'col-xs-9 col-right'<'export-data'T>f>r>t<'row'<'col-xs-3 col-left'i><'col-xs-9 col-right'p>>",
 			"oTableTools": {
 				"aButtons": [
-					
-					{
-						"sExtends": "xls",
-						"mColumns": [0, 2, 3, 4]
-					},
-					{
-						"sExtends": "pdf",
-						"mColumns": [0, 2, 3, 4]
-					},
 					{
 						"sExtends": "print",
 						"fnSetText"	   : "Press 'esc' to return",

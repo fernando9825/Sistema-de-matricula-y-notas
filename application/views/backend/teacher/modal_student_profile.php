@@ -36,60 +36,73 @@ foreach($student_info as $row):?>
 			
 			<div class="">
             		<br>
-                <table class="table table-bordered">
+                    <table class="table table-bordered">
                 
-                    <?php if($row['class_id'] != ''):?>
-                    <tr>
-                        <td>Class</td>
-                        <td><b><?php echo $this->crud_model->get_class_name($row['class_id']);?></b></td>
-                    </tr>
-                    <?php endif;?>
+                <?php if($row['class_id'] != ''):?>
+                <tr>
+                    <td>Grado</td>
+                    <td><b><?php echo $this->crud_model->get_class_name($row['class_id']);?></b></td>
+                </tr>
+                <?php endif;?>
+
+                <?php if($row['section_id'] != '' && $row['section_id'] != 0):?>
+                <tr>
+                    <td>Sección</td>
+                    <td><b><?php echo $this->db->get_where('section' , array('section_id' => $row['section_id']))->row()->name;?></b></td>
+                </tr>
+                <?php endif;?>
+            
+                <?php if($row['roll'] != ''):?>
+                <tr>
+                    <td>NIE</td>
+                    <td><b><?php echo $row['roll'];?></b></td>
+                </tr>
+                <?php endif;?>
+            
+                <?php if($row['birthday'] != ''):?>
+                <tr>
+                    <td>Fecha de nacimiento</td>
+                    <td><b><?php echo $row['birthday'];?></b></td>
+                </tr>
+                <?php endif;?>
+            
+                <?php if($row['sex'] != ''):?>
+                <tr>
+                    <td>Género</td>
+                    <td><b><?php echo $row['sex'];?></b></td>
+                </tr>
+                <?php endif;?>
+            
+            
+                <?php if($row['phone'] != ''):?>
+                <tr>
+                    <td>Telefono</td>
+                    <td><b><?php echo $row['phone'];?></b></td>
+                </tr>
+                <?php endif;?>
+            
+                <?php if($row['email'] != ''):?>
+                <tr>
+                    <td>Correo</td>
+                    <td><b><?php echo $row['email'];?></b></td>
+                </tr>
+                <?php endif;?>
+            
+                <?php if($row['address'] != ''):?>
+                <tr>
+                    <td>Dirección</td>
+                    <td><b><?php echo $row['address'];?></b>
+                    </td>
+                </tr>
+                <?php endif;?>
+                <?php if($row['mother_name'] != ''):?>
+                <tr>
+                    <td>Encargado</td>
+                    <td><b><?php echo $row['mother_name'];  ?></b></td>
+                </tr>
+                <?php endif;?>
                 
-                    <?php if($row['roll'] != ''):?>
-                    <tr>
-                        <td>Roll</td>
-                        <td><b><?php echo $row['roll'];?></b></td>
-                    </tr>
-                    <?php endif;?>
-                
-                    <?php if($row['birthday'] != ''):?>
-                    <tr>
-                        <td>Birthday</td>
-                        <td><b><?php echo $row['birthday'];?></b></td>
-                    </tr>
-                    <?php endif;?>
-                
-                    <?php if($row['sex'] != ''):?>
-                    <tr>
-                        <td>Gender</td>
-                        <td><b><?php echo $row['sex'];?></b></td>
-                    </tr>
-                    <?php endif;?>
-                
-                
-                    <?php if($row['phone'] != ''):?>
-                    <tr>
-                        <td>Phone</td>
-                        <td><b><?php echo $row['phone'];?></b></td>
-                    </tr>
-                    <?php endif;?>
-                
-                    <?php if($row['email'] != ''):?>
-                    <tr>
-                        <td>Email</td>
-                        <td><b><?php echo $row['email'];?></b></td>
-                    </tr>
-                    <?php endif;?>
-                
-                    <?php if($row['address'] != ''):?>
-                    <tr>
-                        <td>Address</td>
-                        <td><b><?php echo $row['address'];?></b>
-                        </td>
-                    </tr>
-                    <?php endif;?>
-                    
-                </table>
+            </table>
 			</div>
 		</div>		
 	</section>

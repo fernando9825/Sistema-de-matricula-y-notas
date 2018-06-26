@@ -34,6 +34,35 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') == 1)
             redirect(base_url() . 'index.php?admin/dashboard', 'refresh');
     }
+
+    /*** Print PDF ***/
+    function get_listado_secciones($section_id, $class_id){
+        
+        $this->load->library('mydompdf');
+        $this->load->model("Crud_model");
+
+		$data['estudiantes'] = $this->db->get_where("student", array("section_id" => $section_id))->result();
+        $data['grado'] = $this->Crud_model->get_type_name_by_id("class", $class_id)." - ". $this->Crud_model->get_type_name_by_id("section", $section_id);
+        $html= $this->load->view('pdf/listado_secciones', $data, true);
+ 		$this->mydompdf->load_html($html);
+ 		$this->mydompdf->render();
+ 		$this->mydompdf->set_base_path('./assets/css/listado_secciones.css'); //agregar de nuevo el css
+ 		$this->mydompdf->stream("listado.pdf", array("Attachment" => false));
+
+    }
+
+    function get_listado_asistencia($section_id, $class_id){
+        $this->load->library('mydompdf');
+        $this->load->model("Crud_model");
+
+		$data['estudiantes'] = $this->db->get_where("student", array("section_id" => $section_id))->result();
+        $data['grado'] = $this->Crud_model->get_type_name_by_id("class", $class_id)." - ". $this->Crud_model->get_type_name_by_id("section", $section_id);
+        $html= $this->load->view('pdf/listado_asistencia', $data, true);
+ 		$this->mydompdf->load_html($html);
+ 		$this->mydompdf->render();
+ 		$this->mydompdf->set_base_path('./assets/css/listado_secciones.css'); //agregar de nuevo el css
+ 		$this->mydompdf->stream("listado.pdf", array("Attachment" => false));
+    }
     
     /***ADMIN DASHBOARD***/
     function dashboard()
@@ -151,14 +180,11 @@ class Admin extends CI_Controller
             $data['address']        = $this->input->post('address');
             $data['phone']          = $this->input->post('phone');
             $data['email']          = $this->input->post('email');
-            $data['password']       = $this->input->post('password');
             $data['class_id']       = $this->input->post('class_id');
             if ($this->input->post('section_id') != '') {
                 $data['section_id'] = $this->input->post('section_id');
             }
-            $data['parent_id']      = $this->input->post('parent_id');
-            $data['dormitory_id']   = $this->input->post('dormitory_id');
-            $data['transport_id']   = $this->input->post('transport_id');
+            $data['mother_name']      = $this->input->post('mother_name');
             $data['roll']           = $this->input->post('roll');
             $this->db->insert('student', $data);
             $student_id = $this->db->insert_id();
@@ -176,9 +202,7 @@ class Admin extends CI_Controller
             $data['email']          = $this->input->post('email');
             $data['class_id']       = $this->input->post('class_id');
             $data['section_id']     = $this->input->post('section_id');
-            $data['parent_id']      = $this->input->post('parent_id');
-            $data['dormitory_id']   = $this->input->post('dormitory_id');
-            $data['transport_id']   = $this->input->post('transport_id');
+            $data['mother_name']      = $this->input->post('mother_name');
             $data['roll']           = $this->input->post('roll');
             
             $this->db->where('student_id', $param3);
@@ -426,13 +450,17 @@ class Admin extends CI_Controller
         }
     }
 
-    function get_class_subject($class_id)
+    function get_class_subject($class_id, $subject_id=0)
     {
         $subjects = $this->db->get_where('subject' , array(
             'class_id' => $class_id
         ))->result_array();
         foreach ($subjects as $row) {
-            echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+            if($subject_id ==  $row['subject_id']){
+                echo '<option selected value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+            }else{
+                echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+            }
         }
     }
 
@@ -679,8 +707,8 @@ class Admin extends CI_Controller
         if ($param1 == 'create') {
             $data['class_id']       = $this->input->post('class_id');
             $data['subject_id']     = $this->input->post('subject_id');
-            $data['time_start']     = $this->input->post('time_start') + (12 * ($this->input->post('starting_ampm') - 1));
-            $data['time_end']       = $this->input->post('time_end') + (12 * ($this->input->post('ending_ampm') - 1));
+            $data['time_start']     = $this->input->post('time_start');// + (12 * ($this->input->post('starting_ampm') - 1));
+            $data['time_end']       = $this->input->post('time_end'); //+ (12 * ($this->input->post('ending_ampm') - 1));
             $data['time_start_min'] = $this->input->post('time_start_min');
             $data['time_end_min']   = $this->input->post('time_end_min');
             $data['day']            = $this->input->post('day');
@@ -691,8 +719,8 @@ class Admin extends CI_Controller
         if ($param1 == 'do_update') {
             $data['class_id']       = $this->input->post('class_id');
             $data['subject_id']     = $this->input->post('subject_id');
-            $data['time_start']     = $this->input->post('time_start') + (12 * ($this->input->post('starting_ampm') - 1));
-            $data['time_end']       = $this->input->post('time_end') + (12 * ($this->input->post('ending_ampm') - 1));
+            $data['time_start']     = $this->input->post('time_start'); //+ (12 * ($this->input->post('starting_ampm') - 1));
+            $data['time_end']       = $this->input->post('time_end'); //+ (12 * ($this->input->post('ending_ampm') - 1));
             $data['time_start_min'] = $this->input->post('time_start_min');
             $data['time_end_min']   = $this->input->post('time_end_min');
             $data['day']            = $this->input->post('day');
@@ -714,6 +742,7 @@ class Admin extends CI_Controller
         }
         $page_data['page_name']  = 'class_routine';
         $page_data['page_title'] = get_phrase('manage_class_routine');
+        
         $this->load->view('backend/index', $page_data);
     }
 	

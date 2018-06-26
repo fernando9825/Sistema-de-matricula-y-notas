@@ -58,13 +58,6 @@
                     </a>
                 </li>
 
-                <!-- STUDENT BULK ADMISSION -->
-                <li class="<?php if ($page_name == 'student_bulk_add') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/student_bulk_add">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('admit_bulk_student'); ?></span>
-                    </a>
-                </li>
-
                 <!-- STUDENT INFORMATION -->
                 <li class="<?php if ($page_name == 'student_information' || $page_name == 'student_marksheet') echo 'opened active'; ?> ">
                     <a href="#">
@@ -92,14 +85,6 @@
             <a href="<?php echo base_url(); ?>index.php?admin/teacher">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('teacher'); ?></span>
-            </a>
-        </li>
-
-        <!-- PARENTS -->
-        <li class="<?php if ($page_name == 'parent') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/parent">
-                <i class="entypo-user"></i>
-                <span><?php echo get_phrase('parents'); ?></span>
             </a>
         </li>
 
@@ -155,14 +140,6 @@
             </a>
         </li>
 
-        <!-- DAILY ATTENDANCE -->
-        <li class="<?php if ($page_name == 'manage_attendance') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/manage_attendance/<?php echo date("d/m/Y"); ?>">
-                <i class="entypo-chart-area"></i>
-                <span><?php echo get_phrase('daily_attendance'); ?></span>
-            </a>
-
-        </li>
 
         <!-- EXAMS -->
         <li class="<?php
@@ -206,87 +183,11 @@
             </ul>
         </li>
 
-        <!-- PAYMENT -->
-        <!-- <li class="<?php //if ($page_name == 'invoice') echo 'active'; ?> ">
-            <a href="<?php //echo base_url(); ?>index.php?admin/invoice">
-                <i class="entypo-credit-card"></i>
-                <span><?php //echo get_phrase('payment'); ?></span>
-            </a>
-        </li> -->
-
-        <!-- ACCOUNTING -->
-        <li class="<?php
-        if ($page_name == 'income' ||
-                $page_name == 'expense' ||
-                    $page_name == 'expense_category' ||
-                        $page_name == 'student_payment')
-                            echo 'opened active';
-        ?> ">
-            <a href="#">
-                <i class="entypo-suitcase"></i>
-                <span><?php echo get_phrase('accounting'); ?></span>
-            </a>
-            <ul>
-                <li class="<?php if ($page_name == 'student_payment') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/student_payment">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('create_student_payment'); ?></span>
-                    </a>
-                </li>
-                <li class="<?php if ($page_name == 'income') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/income">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('student_payments'); ?></span>
-                    </a>
-                </li>
-                <li class="<?php if ($page_name == 'expense') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/expense">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('expense'); ?></span>
-                    </a>
-                </li>
-                <li class="<?php if ($page_name == 'expense_category') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/expense_category">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('expense_category'); ?></span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <!-- LIBRARY -->
-        <li class="<?php if ($page_name == 'book') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/book">
-                <i class="entypo-book"></i>
-                <span><?php echo get_phrase('library'); ?></span>
-            </a>
-        </li>
-
-        <!-- TRANSPORT -->
-        <li class="<?php if ($page_name == 'transport') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/transport">
-                <i class="entypo-location"></i>
-                <span><?php echo get_phrase('transport'); ?></span>
-            </a>
-        </li>
-
-        <!-- DORMITORY -->
-        <li class="<?php if ($page_name == 'dormitory') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/dormitory">
-                <i class="entypo-home"></i>
-                <span><?php echo get_phrase('dormitory'); ?></span>
-            </a>
-        </li>
-
         <!-- NOTICEBOARD -->
         <li class="<?php if ($page_name == 'noticeboard') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?admin/noticeboard">
                 <i class="entypo-doc-text-inv"></i>
                 <span><?php echo get_phrase('noticeboard'); ?></span>
-            </a>
-        </li>
-
-        <!-- MESSAGE -->
-        <li class="<?php if ($page_name == 'message') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/message">
-                <i class="entypo-mail"></i>
-                <span><?php echo get_phrase('message'); ?></span>
             </a>
         </li>
 

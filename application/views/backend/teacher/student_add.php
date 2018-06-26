@@ -23,19 +23,8 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('parent');?></label>
                         
 						<div class="col-sm-5">
-							<select name="parent_id" class="form-control">
-                              <option value=""><?php echo get_phrase('select');?></option>
-                              <?php 
-								$parents = $this->db->get('parent')->result_array();
-								foreach($parents as $row):
-									?>
-                            		<option value="<?php echo $row['parent_id'];?>">
-										<?php echo $row['name'];?>
-                                    </option>
-                                <?php
-								endforeach;
-							  ?>
-                          </select>
+							<input type="text" class="form-control" name="mother_name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" autofocus>
+
 						</div> 
 					</div>
 					
@@ -121,14 +110,7 @@
 							<input type="text" class="form-control" name="email" value="">
 						</div>
 					</div>
-					
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('password');?></label>
-                        
-						<div class="col-sm-5">
-							<input type="text" class="form-control" name="password" value="" >
-						</div> 
-					</div>
+
 	
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>
