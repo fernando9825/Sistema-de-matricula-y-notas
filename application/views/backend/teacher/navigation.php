@@ -127,14 +127,7 @@ if ($page_name == 'exam' ||
                 <i class="entypo-graduation-cap"></i>
                 <span><?php echo get_phrase('exam'); ?></span>
             </a>
-            <ul>
 
-                <li class="<?php if ($page_name == 'marks') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/marks">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('manage_marks'); ?></span>
-                    </a>
-                </li>
-            </ul>
         </li>
 
 

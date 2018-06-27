@@ -152,35 +152,9 @@
         ?> ">
             <a href="#">
                 <i class="entypo-graduation-cap"></i>
-                <span><?php echo get_phrase('exam'); ?></span>
+                <span>Notas</span>
             </a>
-            <ul>
-                <li class="<?php if ($page_name == 'exam') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/exam">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('exam_list'); ?></span>
-                    </a>
-                </li>
-                <li class="<?php if ($page_name == 'grade') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/grade">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('exam_grades'); ?></span>
-                    </a>
-                </li>
-                <li class="<?php if ($page_name == 'marks') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/marks">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('manage_marks'); ?></span>
-                    </a>
-                </li>
-                <li class="<?php if ($page_name == 'exam_marks_sms') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/exam_marks_sms">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('send_marks_by_sms'); ?></span>
-                    </a>
-                </li>
-                <li class="<?php if ($page_name == 'tabulation_sheet') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/tabulation_sheet">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('tabulation_sheet'); ?></span>
-                    </a>
-                </li>
-            </ul>
+            
         </li>
 
         <!-- NOTICEBOARD -->
@@ -208,11 +182,7 @@
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('general_settings'); ?></span>
                     </a>
                 </li>
-                <li class="<?php if ($page_name == 'sms_settings') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/sms_settings">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('sms_settings'); ?></span>
-                    </a>
-                </li>
+               
                 <li class="<?php if ($page_name == 'manage_language') echo 'active'; ?> ">
                     <a href="<?php echo base_url(); ?>index.php?admin/manage_language">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('language_settings'); ?></span>
