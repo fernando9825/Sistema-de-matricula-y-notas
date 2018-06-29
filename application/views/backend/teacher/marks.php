@@ -57,6 +57,10 @@ if($(".nota").val() && $(".alumno").val() && $(".materia").val() && $(".class").
       function( data ) {
       console.log(data)
       document.querySelector(".alumno").selectedIndex = 0
+      $(".mimodal").show()
+      setTimeout(() => {
+        $(".mimodal").fadeOut(2000)
+      }, 700)
      
   })
 }
@@ -150,6 +154,14 @@ else{
 </div>
   </div>
   
+
+  <div class="hero is-success mimodal" style="margin-top: 2rem; display: none">
+            <div class="hero-body">
+              <div class="subtitle">
+              Notas agregadas
+              </div>
+            </div>
+  </div>
 
 </div>
 </div>
