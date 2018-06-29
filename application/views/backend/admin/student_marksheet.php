@@ -158,11 +158,11 @@ function toPDF(id){
                                     "stackType": "3d",
                                     "unit": "%",
                                     "position": "left",
-                                    "title": "Obtained Mark vs Highest Mark"
+                                    "title": "Eficiencia"
                                 }],
                                 "startDuration": 1,
                                 "graphs": [{
-                                    "balloonText": "Obtained Mark in [[category]]: <b>[[value]]</b>",
+                                    "balloonText": "Nota obtenida [[category]]: <b>[[value]]</b>",
                                     "fillAlphas": 0.9,
                                     "lineAlpha": 0.2,
                                     "title": "2004",
@@ -170,7 +170,7 @@ function toPDF(id){
                                     "fillColors":"#7f8c8d",
                                     "valueField": "mark_obtained"
                                 }, {
-                                    "balloonText": "Highest Mark in [[category]]: <b>[[value]]</b>",
+                                    "balloonText": "Nota más alta [[category]]: <b>[[value]]</b>",
                                     "fillAlphas": 0.9,
                                     "lineAlpha": 0.2,
                                     "title": "2005",
@@ -203,10 +203,10 @@ function toPDF(id){
 <?php
     endforeach;
         endforeach;
-?>
- <button onclick="toPDF('<?php echo $student_id?>')" class="btn btn-primary" target="_blank" >
-                        <?php echo get_phrase('Imprimir Boletas');?>
-                    </button>
+?> 
+<button onclick="toPDF('<?php echo $student_id?>')" class="btn btn-primary" target="_blank" >
+<?php echo get_phrase('Imprimir Boletas');?>
+</button>
                     </div>
                     <script>
 window.onload = ()=>{
