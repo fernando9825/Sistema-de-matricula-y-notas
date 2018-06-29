@@ -32,6 +32,7 @@
                     		data-postfix="" data-duration="1500" data-delay="0">0</div>
                     
                     <h3>Estudiantes</h3>
+                   
                 </div>
                 
             </div>
@@ -43,38 +44,12 @@
                     		data-postfix="" data-duration="800" data-delay="0">0</div>
                     
                     <h3>Maestros</h3>
-                
+                  
                 </div>
                 
             </div>
-            <div class="col-md-12">
             
-                <div class="tile-stats tile-aqua">
-                    <div class="icon"><i class="entypo-user"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('parent');?>" 
-                    		data-postfix="" data-duration="500" data-delay="0">0</div>
-                    
-                    <h3>Padres</h3>
-                </div>
-                
-            </div>
-            <div class="col-md-12">
-            
-                <div class="tile-stats tile-blue">
-                    <div class="icon"><i class="entypo-chart-bar"></i></div>
-                    <?php 
-							$check	=	array(	'date' => date('Y-m-d') , 'status' => '1' );
-							$query = $this->db->get_where('attendance' , $check);
-							$present_today		=	$query->num_rows();
-						?>
-                    <div class="num" data-start="0" data-end="<?php echo $present_today;?>" 
-                    		data-postfix="" data-duration="500" data-delay="0">0</div>
-                    
-                    <h3><?php echo get_phrase('attendance');?></h3>
-                   <p>Total present student today</p>
-                </div>
-                
-            </div>
+    
     	</div>
     </div>
 	
