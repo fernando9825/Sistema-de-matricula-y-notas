@@ -65,7 +65,7 @@ function toPDF(id){
                             <td style="text-align: center;">Materia</td>
                             <td style="text-align: center;">Nota</td>
                             <td style="text-align: center;">Nota más alta</td>
-                            <td style="text-align: center;">Grade</td>
+                            <td style="text-align: center;"></td>
                             <td style="text-align: center;">Comentarios</td>
                         </tr>
                     </thead>
@@ -119,19 +119,9 @@ function toPDF(id){
                     </tbody>
                    </table>
 
-                   <hr />
+                   
 
-                   <?php echo get_phrase('total_marks');?> : <?php echo $total_marks;?>
-                   <br>
-                   <?php echo get_phrase('average_grade_point');?> : 
-                        <?php 
-                            $this->db->where('class_id' , $class_id);
-                            $this->db->from('subject');
-                            $number_of_subjects = $this->db->count_all_results();
-                            echo ($total_grade_point / $number_of_subjects);
-                        ?>
-
-                    <br> <br>
+                   
                    
                </div>
 
@@ -218,3 +208,8 @@ function toPDF(id){
                         <?php echo get_phrase('Imprimir Boletas');?>
                     </button>
                     </div>
+                    <script>
+window.onload = ()=>{
+    document.querySelector("h3").innerHTML = document.querySelector("h3").innerHTML.replace("Marksheet For","Notas de ")
+}
+</script>
