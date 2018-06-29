@@ -158,11 +158,11 @@ function toPDF(id){
                                     "stackType": "3d",
                                     "unit": "%",
                                     "position": "left",
-                                    "title": "Obtained Mark vs Highest Mark"
+                                    "title": "Eficiencia"
                                 }],
                                 "startDuration": 1,
                                 "graphs": [{
-                                    "balloonText": "Obtained Mark in [[category]]: <b>[[value]]</b>",
+                                    "balloonText": "Nota obtenida [[category]]: <b>[[value]]</b>",
                                     "fillAlphas": 0.9,
                                     "lineAlpha": 0.2,
                                     "title": "2004",
@@ -170,7 +170,7 @@ function toPDF(id){
                                     "fillColors":"#7f8c8d",
                                     "valueField": "mark_obtained"
                                 }, {
-                                    "balloonText": "Highest Mark in [[category]]: <b>[[value]]</b>",
+                                    "balloonText": "Nota más alta [[category]]: <b>[[value]]</b>",
                                     "fillAlphas": 0.9,
                                     "lineAlpha": 0.2,
                                     "title": "2005",
