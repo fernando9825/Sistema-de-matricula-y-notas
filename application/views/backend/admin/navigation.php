@@ -140,23 +140,6 @@
             </a>
         </li>
 
-
-        <!-- EXAMS -->
-        <li class="<?php
-        if ($page_name == 'exam' ||
-                $page_name == 'grade' ||
-                $page_name == 'marks' ||
-                    $page_name == 'exam_marks_sms' ||
-                        $page_name == 'tabulation_sheet')
-                            echo 'opened active';
-        ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/marks">">
-                <i class="entypo-graduation-cap"></i>
-                <span>Notas</span>
-            </a>
-            
-        </li>
-
         <!-- NOTICEBOARD -->
         <li class="<?php if ($page_name == 'noticeboard') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?admin/noticeboard">
