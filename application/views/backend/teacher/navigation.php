@@ -123,9 +123,9 @@ if ($page_name == 'exam' ||
         $page_name == 'marks')
     echo 'opened active';
 ?> ">
-            <a href="#">
+            <a href="<?php echo base_url(); ?>index.php?teacher/marks">
                 <i class="entypo-graduation-cap"></i>
-                <span><?php echo get_phrase('exam'); ?></span>
+                <span>Notas</span>
             </a>
 
         </li>
