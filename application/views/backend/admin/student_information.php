@@ -65,7 +65,13 @@
                                     <ul class="dropdown-menu dropdown-default pull-right" role="menu">
 
                     
-
+<!-- STUDENT MARKSHEET LINK  -->
+<li>
+                            <a href="<?php echo base_url();?>index.php?admin/student_marksheet/<?php echo $row['student_id'];?>">
+                                <i class="entypo-chart-bar"></i>
+                                    Notas
+                                </a>
+                        </li>
                                         
                                         <!-- STUDENT PROFILE LINK -->
                                         <li>
@@ -86,7 +92,7 @@
                                         
                                         <!-- STUDENT DELETION LINK -->
                                         <li>
-                                            <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>');">
+                                            <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?teacher/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>');">
                                                 <i class="entypo-trash"></i>
                                                     <?php echo get_phrase('delete');?>
                                                 </a>
@@ -112,9 +118,9 @@
                 <table class="table table-bordered datatable" id="table_export">
 
                     <!-- <button class="btn btn-primary" id="" value=<?php //echo "'".$row['section_id']."'";?> >Generar PDF</button> -->
-                    <a class="btn btn-primary" target="_blank" href=<?php echo base_url()."index.php?admin/get_listado_secciones/".$row['section_id']."/".$class_id;?> >Generar listado de Estudiantes</a>
+                    <a class="btn btn-primary" target="_blank" href=<?php echo base_url()."index.php?teacher/get_listado_secciones/".$row['section_id']."/".$class_id;?> >Generar listado de Estudiantes</a>
                     
-                    <a class="btn btn-primary pull-right" target="_blank" href=<?php echo base_url()."index.php?admin/get_listado_asistencia/".$row['section_id']."/".$class_id;?> >Hoja de asistencia</a>
+                    <a class="btn btn-primary pull-right" target="_blank" href=<?php echo base_url()."index.php?teacher/get_listado_asistencia/".$row['section_id']."/".$class_id;?> >Hoja de asistencia</a>
                     
                     <br>
                     <br>
@@ -167,7 +173,7 @@
                                         
                                         <!-- STUDENT DELETION LINK -->
                                         <li>
-                                            <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>');">
+                                            <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?teacher/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>');">
                                                 <i class="entypo-trash"></i>
                                                     <?php echo get_phrase('delete');?>
                                                 </a>
@@ -236,3 +242,5 @@
 	});
 		
 </script>
+
+
