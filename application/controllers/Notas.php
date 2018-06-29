@@ -101,6 +101,21 @@ class Notas extends CI_Controller {
 
         echo "</table>";
     }
+
+    function getSMaterias(){
+        echo "<table class='table is-striped is-hoverable'>";
+        $query = $this->db->query("select subject_id from mark where student_id = ". $_POST["student_id"]);
+        echo "<tr><th class='has-text-black subtitle'>Mis Asignaturas</th></tr>";
+        foreach ($query->result() as $row){
+            echo "<tr>";
+                $query2 = $this->db->query("select name from subject where subject_id = ".$row->subject_id);
+                foreach ($query2->result() as $row2){ echo '<td style="display:block !important">'. $row2->name .'</td>';}
+                echo "</tr>";
+        }
+
+        echo "</table>";
+
+    }
 }
 
 ?>
