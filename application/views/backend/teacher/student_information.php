@@ -65,7 +65,13 @@
                                     <ul class="dropdown-menu dropdown-default pull-right" role="menu">
 
                     
-
+<!-- STUDENT MARKSHEET LINK  -->
+<li>
+                            <a href="<?php echo base_url();?>index.php?teacher/student_marksheet/<?php echo $row['student_id'];?>">
+                                <i class="entypo-chart-bar"></i>
+                                    Notas
+                                </a>
+                        </li>
                                         
                                         <!-- STUDENT PROFILE LINK -->
                                         <li>
@@ -236,3 +242,5 @@
 	});
 		
 </script>
+
+
