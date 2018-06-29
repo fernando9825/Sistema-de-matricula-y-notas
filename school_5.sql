@@ -439,12 +439,9 @@ CREATE TABLE IF NOT EXISTS `exam` (
 --
 
 INSERT INTO `exam` (`exam_id`, `name`, `date`, `comment`) VALUES
-(1, 'Unit Test 1', '08/01/2015', 'UT1'),
-(2, 'Unit Test 2', '09/01/2015', 'UT2'),
-(3, 'Mid Term 1', '11/01/2015', 'T1'),
-(4, 'Unit Test 3', '01/01/2016', 'UT3'),
-(5, 'Unit Test 3', '02/01/2016', 'UT3'),
-(6, 'Final Term 2', '04/01/2016', 'T2');
+(1, 'Primer Trimestre', '08/01/2015', 'UT1'),
+(2, 'Segundo Trimestre', '09/01/2015', 'UT2'),
+(3, 'Tercer Trimestre', '11/01/2015', 'T1');
 
 -- --------------------------------------------------------
 
