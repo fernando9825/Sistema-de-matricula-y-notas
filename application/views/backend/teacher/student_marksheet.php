@@ -6,7 +6,36 @@
 }
   
 </style>
+<link rel="stylesheet" href="bulma.min.css">
+<script src="dist/html2pdf.bundle.min.js"></script>
+<script>
+function toPDF(id){
+    let element = document.createElement("div")
 
+  $.post("index.php?notas/getReview",{student_id: id},
+      function( data ) {
+      console.log(data)
+     element.innerHTML  = data
+  }).done(()=>{
+    var opt = {
+    margin:       1,
+    filename:     'notas.pdf',
+    image:        { type: 'jpeg', quality: 1},
+    html2canvas:  { scale: 2 },
+    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().from(element).set(opt).save();
+  })
+
+
+
+
+
+}
+</script>
+<div class="pdfer">
 <?php 
     $student_info = $this->crud_model->get_student_info($student_id);
     $exams         = $this->crud_model->get_exams();
@@ -21,17 +50,23 @@
                 <div class="panel-title"><?php echo $row2['name'];?></div>
             </div>
             <div class="panel-body">
-                
+                <style>
+                table tr td:nth-last-child(2){
+                    display: none !important
+                }
+
+               
+                </style>
                 
                <div class="col-md-6">
                    <table class="table table-bordered">
                        <thead>
                         <tr>
-                            <td style="text-align: center;">Subject</td>
-                            <td style="text-align: center;">Obtained marks</td>
-                            <td style="text-align: center;">Highest mark</td>
+                            <td style="text-align: center;">Materia</td>
+                            <td style="text-align: center;">Nota</td>
+                            <td style="text-align: center;">Nota más alta</td>
                             <td style="text-align: center;">Grade</td>
-                            <td style="text-align: center;">Comment</td>
+                            <td style="text-align: center;">Comentarios</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,10 +132,7 @@
                         ?>
 
                     <br> <br>
-                    <a href="<?php echo base_url();?>index.php?teacher/student_marksheet_print_view/<?php echo $student_id;?>/<?php echo $row2['exam_id'];?>" 
-                        class="btn btn-primary" target="_blank">
-                        <?php echo get_phrase('print_marksheet');?>
-                    </a>
+                   
                </div>
 
                <div class="col-md-6">
@@ -182,3 +214,7 @@
     endforeach;
         endforeach;
 ?>
+ <button onclick="toPDF('<?php echo $student_id?>')" class="btn btn-primary" target="_blank" >
+                        <?php echo get_phrase('Imprimir Boletas');?>
+                    </button>
+                    </div>
